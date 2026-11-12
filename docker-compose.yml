@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: api-autenticacao-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bd-autenticacao
+      POSTGRES_USER: coti
+      POSTGRES_PASSWORD: coti
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: api-autenticacao-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: coti@email.com
+      PGADMIN_DEFAULT_PASSWORD: coti
+    ports:
+      - "5053:80"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

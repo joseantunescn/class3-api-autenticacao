@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: api-autenticacao
+
+  datasource:
+    url: jdbc:postgresql://localhost:5435/bd-autenticacao
+    username: coti
+    password: coti
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update # Cria e atualiza as tabelas conforme as entidades
+    show-sql: true # Exibe os comandos SQL no console
+    properties:
+      hibernate:
+        format_sql: true # Formata o SQL para facilitar a leitura
+
+server:
+  port: 8082
+
+jwt:
+    secret: 30a4619c-acf8-4121-b5a3-49af7f321ede
+    expiration: 3600000 # 1 hora em milissegundos
